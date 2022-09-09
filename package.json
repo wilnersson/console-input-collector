@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Helps you collect user input in your terminal apps.",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js"
+    "start": "node test-app/index.js"
   },
   "repository": {
     "type": "git",

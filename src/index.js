@@ -5,4 +5,9 @@
  * @version 1.0.0
  */
 
-console.log('Hello World!')
+/**
+ * Export the main function.
+ */
+export const sayHello = function () {
+  console.log('Hello World!')
+}
