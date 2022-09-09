@@ -1,0 +1,19 @@
+{
+  "name": "terminal-input-collector",
+  "version": "1.0.0",
+  "description": "Helps you collect user input in your terminal apps.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wilnersson/terminal-input-collector.git"
+  },
+  "author": "Henrik Wilnersson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wilnersson/terminal-input-collector/issues"
+  },
+  "homepage": "https://github.com/wilnersson/terminal-input-collector#readme"
+}
