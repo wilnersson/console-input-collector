@@ -2,9 +2,10 @@
   "name": "terminal-input-collector",
   "version": "1.0.0",
   "description": "Helps you collect user input in your terminal apps.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/wilnersson/terminal-input-collector/issues"
   },
-  "homepage": "https://github.com/wilnersson/terminal-input-collector#readme"
+  "homepage": "https://github.com/wilnersson/terminal-input-collector#readme",
+  "devDependencies": {
+    "@lnu/eslint-config": "^1.1.6"
+  },
+  "eslintConfig": {
+    "extends": "@lnu"
+  }
 }
