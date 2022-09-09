@@ -5,6 +5,6 @@
  * @version 1.0.0
  */
 
-import { sayHello } from '../src/'
+import { sayHello } from '../src/index.js'
 
-sayHello()
+await sayHello()

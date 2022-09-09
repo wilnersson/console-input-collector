@@ -5,7 +5,7 @@
  * @version 1.0.0
  */
 
-import * as readline from 'node:readline/promises'
+import readline from 'readline'
 
 /**
  * Class for InputReader.
@@ -30,8 +30,18 @@ export class InputReader {
    * @returns {string} - User input.
    */
   async requestInput (question) {
-    const input = await this.#reader.question(question)
+    const promise = new Promise((resolve) => {
+      this.#reader.question(question, (answer) => {
+        resolve(answer)
+      })
+    })
+    return await promise
+  }
 
-    return input
+  /**
+   * Closes the connection to the input stream.
+   */
+  close () {
+    this.#reader.close()
   }
 }
