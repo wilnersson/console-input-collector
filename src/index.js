@@ -8,14 +8,16 @@
 import { InputReader } from './InputReader.js'
 
 /**
- * Export the main function.
+ * Ask the user a question and returns the string input.
+ *
+ * @param {string} question - The question to ask the user.
+ * @returns {string} - The answer from the user.
  */
-export const sayHello = async function () {
+export async function getStringInput (question) {
   const reader = new InputReader()
 
-  const answer = await reader.requestInput('Hi, how are you?')
-
-  console.log('You answered: ' + answer)
+  const answer = await reader.requestInput(question + ' ')
 
   reader.close()
+  return answer
 }

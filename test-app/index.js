@@ -5,6 +5,8 @@
  * @version 1.0.0
  */
 
-import { sayHello } from '../src/index.js'
+import { getStringInput } from '../src/index.js'
 
-await sayHello()
+const todaysMood = await getStringInput('How are you today?')
+
+console.log(`Your mood today is: ${todaysMood}`)
