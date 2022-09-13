@@ -6,26 +6,39 @@
  */
 
 import { InputStreamReader } from './InputStreamReader.js'
+import { StringInput } from './StringInput.js'
 
 /**
  * Class for InputCollector.
  */
 export class InputCollector {
   #reader
+  #INPUT_ERROR
+
+  /**
+   * Constructor for InputCollector.
+   */
+  constructor () {
+    this.#INPUT_ERROR = new Error('Invalid input.')
+    this.#INPUT_ERROR.name = 'ValidationError'
+  }
 
   /**
    * Asks the user a question and returns the string input.
    *
    * @param {string} question - The question to ask the user.
-   * @returns {Promise<string>} - A promise that resolves to the users answer as a string.
+   * @param {number} maxAnswerLength - Optional maximum allowed string length for the answer.
+   * @returns {string} - The validated answer from the user.
+   * @throws {Error} - ValidationError if user input is not valid.
    */
-  async getStringInput (question) {
+  async getStringInput (question, maxAnswerLength = null) {
     this.#reader = new InputStreamReader()
 
-    const answer = await this.#reader.requestInput(question + ' ')
-
+    const stringInput = new StringInput(await this.#reader.requestInput(question + ' '), maxAnswerLength)
     this.#reader.close()
-    return answer
+
+    if (stringInput.isValid()) return stringInput.getInput()
+    throw this.#INPUT_ERROR
   }
 
   /**

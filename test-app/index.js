@@ -7,16 +7,14 @@
 
 import { collector } from '../src/index.js'
 
-const usersAge = await collector.getIntegerInput('How old are you?')
+// const usersAge = await collector.getIntegerInput('How old are you?')
 
-console.log('Your age is: ' + usersAge)
+// console.log('Your age is: ' + usersAge)
 
-/*
 const todaysMood = await collector.getStringInput('How are you today?')
 
 console.log(`Your mood today is: ${todaysMood}`)
 
-const usersName = await collector.getStringInput('What is your name?')
+const usersName = await collector.getStringInput('What is your name?', 3)
 
 console.log(`Nice to meet you ${usersName}`)
-*/
