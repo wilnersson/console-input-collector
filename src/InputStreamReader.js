@@ -10,7 +10,7 @@ import readline from 'readline'
 /**
  * Class for InputReader.
  */
-export class InputReader {
+export class InputStreamReader {
   #reader
 
   /**

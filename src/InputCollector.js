@@ -5,7 +5,7 @@
  * @version 1.0.0
  */
 
-import { InputReader } from './InputReader.js'
+import { InputStreamReader } from './InputStreamReader.js'
 
 /**
  * Class for InputCollector.
@@ -20,7 +20,7 @@ export class InputCollector {
    * @returns {Promise<string>} - A promise that resolves to the users answer as a string.
    */
   async getStringInput (question) {
-    this.#reader = new InputReader()
+    this.#reader = new InputStreamReader()
 
     const answer = await this.#reader.requestInput(question + ' ')
 
@@ -35,7 +35,7 @@ export class InputCollector {
    * @returns {Promise<number>} - A promise that resolves to the users answer as a number.
    */
   async getIntegerInput (question) {
-    this.#reader = new InputReader()
+    this.#reader = new InputStreamReader()
     let answer
     let verifyAnswer
 
