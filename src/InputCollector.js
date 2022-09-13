@@ -6,6 +6,7 @@
  */
 
 import { InputStreamReader } from './InputStreamReader.js'
+import { IntegerInput } from './IntegerInput.js'
 import { StringInput } from './StringInput.js'
 
 /**
@@ -34,7 +35,8 @@ export class InputCollector {
   async getStringInput (question, maxAnswerLength = null) {
     this.#reader = new InputStreamReader()
 
-    const stringInput = new StringInput(await this.#reader.requestInput(question + ' '), maxAnswerLength)
+    const stringInput = new StringInput(await this.#reader.requestInput(question + ' '),
+      maxAnswerLength)
     this.#reader.close()
 
     if (stringInput.isValid()) return stringInput.getInput()
@@ -43,22 +45,22 @@ export class InputCollector {
 
   /**
    * Asks the user a question and returns the answer as a whole integer number.
+   * minValue or maxValue = null means there is no lower or upper limit respectively.
    *
    * @param {string} question - The question to ask the user.
+   * @param {number} minValue - Optional minimum value allowed for the answer.
+   * @param {number} maxValue - Optional maximum value allowed for the answer.
    * @returns {Promise<number>} - A promise that resolves to the users answer as a number.
    */
-  async getIntegerInput (question) {
+  async getIntegerInput (question, minValue = null, maxValue = null) {
     this.#reader = new InputStreamReader()
-    let answer
-    let verifyAnswer
 
-    do {
-      answer = Number.parseInt(await this.#reader.requestInput(question + ' '))
-      verifyAnswer = Number.isNaN(answer)
-      if (verifyAnswer) console.log('Invalid answer, try again.')
-    } while (verifyAnswer)
-
+    const integerInput = new IntegerInput(await this.#reader.requestInput(question + ' '),
+      minValue,
+      maxValue)
     this.#reader.close()
-    return answer
+
+    if (integerInput.isValid()) return integerInput.getInput()
+    throw this.#INPUT_ERROR
   }
 }
