@@ -12,15 +12,19 @@ import readline from 'readline'
  */
 export class InputStreamReader {
   #reader
+  #isPassword
 
   /**
    * Constructor for InputReader.
+   *
+   * @param {boolean} isPassword - Set to true if you would like to hide user input.
    */
-  constructor () {
+  constructor (isPassword = false) {
     this.#reader = readline.createInterface({
       input: process.stdin,
       output: process.stdout
     })
+    this.#isPassword = isPassword
   }
 
   /**
@@ -32,9 +36,27 @@ export class InputStreamReader {
   async requestInput (question) {
     const promise = new Promise((resolve) => {
       this.#reader.question(question, (answer) => {
+        // Adds a newline after submit if input is a password.
+        if (this.#isPassword) console.log()
+
         resolve(answer)
       })
     })
+
+    /**
+     * Replaces user input with * if isPassword = true.
+     * Borrowed from: https://stackoverflow.com/questions/24037545/how-to-hide-password-in-the-nodejs-console.
+     *
+     * @param {string} stringToWrite - User input.
+     */
+    this.#reader._writeToOutput = (stringToWrite) => {
+      if (this.#isPassword) {
+        this.#reader.output.write('*')
+      } else {
+        this.#reader.output.write(stringToWrite)
+      }
+    }
+
     return await promise
   }
 
