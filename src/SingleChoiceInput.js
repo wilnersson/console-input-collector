@@ -33,8 +33,8 @@ export class SingleChoiceInput {
   getRenderText () {
     let textToRender = ''
 
-    for (let i = 1; i <= this.#choices.length; i++) {
-      textToRender += `${i}. ${this.#choices[i]} \n`
+    for (let i = 0; i < this.#choices.length; i++) {
+      textToRender += `${i + 1}. ${this.#choices[i]} \n`
     }
 
     textToRender += `Your choice (1-${this.#choices.length}): `
