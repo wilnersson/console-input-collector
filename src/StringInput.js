@@ -23,7 +23,8 @@ export class StringInput {
     this.#inputString = inputString
     this.#maxLength = maxLength
 
-    this.#checkMaxLength()
+    this.#validateMaxLength()
+    this.#isValid = this.#isInputLengthValid()
   }
 
   /**
@@ -46,10 +47,24 @@ export class StringInput {
 
   /**
    * Checks if the input string is valid according to the optional maximum string length.
+   *
+   * @returns {boolean} - True if valid length.
    */
-  #checkMaxLength () {
+  #isInputLengthValid () {
     if (this.#maxLength && this.#inputString.length > this.#maxLength) {
-      this.#isValid = false
+      return false
+    }
+    return true
+  }
+
+  /**
+   * Validates the maxLength parameter.
+   *
+   * @throws {RangeError} - If parameter is invalid.
+   */
+  #validateMaxLength () {
+    if (typeof this.#maxLength !== 'number' || this.#maxLength < 1) {
+      throw new RangeError('maxLength must be a number larger than 0.')
     }
   }
 }

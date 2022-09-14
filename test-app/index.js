@@ -11,7 +11,7 @@ import { collector } from '../src/index.js'
 
 // console.log('Your age is: ' + usersAge)
 
-const todaysMood = await collector.getStringInput('How are you today?')
+const todaysMood = await collector.getStringInput('How are you today?', 100)
 
 console.log(`Your mood today is: ${todaysMood}`)
 
