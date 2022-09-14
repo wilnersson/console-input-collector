@@ -7,6 +7,7 @@
 
 import { InputStreamReader } from './InputStreamReader.js'
 import { IntegerInput } from './IntegerInput.js'
+import { PasswordInput } from './PasswordInput.js'
 import { StringInput } from './StringInput.js'
 
 /**
@@ -50,7 +51,8 @@ export class InputCollector {
    * @param {string} question - The question to ask the user.
    * @param {number} minValue - Optional minimum value allowed for the answer.
    * @param {number} maxValue - Optional maximum value allowed for the answer.
-   * @returns {Promise<number>} - A promise that resolves to the users answer as a number.
+   * @returns {number} - The validated answer from the user.
+   * @throws {Error} - ValidationError if user input is not valid.
    */
   async getIntegerInput (question, minValue = null, maxValue = null) {
     this.#reader = new InputStreamReader()
@@ -61,6 +63,28 @@ export class InputCollector {
     this.#reader.close()
 
     if (integerInput.isValid()) return integerInput.getInput()
+    throw this.#INPUT_ERROR
+  }
+
+  /**
+   * Asks the user a question and returns the answer as a string. Hides user input.
+   * minLength or maxLength = null means there is no lower or upper limit respectively.
+   *
+   * @param {string} question - The question to ask the user.
+   * @param {number} minLength - Optional minimum length allowed for the answer.
+   * @param {number} maxLength - Optional maximum length allowed for the answer.
+   * @returns {string} - The validated answer from the user.
+   * @throws {Error} - ValidationError if user input is not valid.
+   */
+  async getPasswordInput (question, minLength = null, maxLength = null) {
+    this.#reader = new InputStreamReader()
+
+    const passwordInput = new PasswordInput(await this.#reader.requestInput(question + ' '),
+      minLength,
+      maxLength)
+    this.#reader.close()
+
+    if (passwordInput.isValid()) return passwordInput.getInput()
     throw this.#INPUT_ERROR
   }
 }
