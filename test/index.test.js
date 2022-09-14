@@ -23,6 +23,10 @@ describe('StringInput', () => {
     const stringInput = new StringInput('A much too long string', 5)
     expect(stringInput.isValid()).toBe(false)
   })
+
+  test('A string as a maxLength parameter should throw a RangeError.', () => {
+    expect(() => new StringInput('Hello World!', 'notanumber')).toThrow(RangeError)
+  })
 })
 
 describe('IntegerInput', () => {
