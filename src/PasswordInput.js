@@ -29,6 +29,8 @@ export class PasswordInput {
 
     this.#validateMinLength()
     this.#validateMaxLength()
+
+    this.#isValid = this.#isInputLengthValid()
   }
 
   /**
@@ -81,5 +83,20 @@ export class PasswordInput {
         throw this.#RANGE_ERROR
       }
     }
+  }
+
+  /**
+   * Checks if the input password is valid according to the optional min and max password lenght.
+   *
+   * @returns {boolean} - True if valid length.
+   */
+  #isInputLengthValid () {
+    if (this.#minLength && this.#inputPassword.length < this.#minLength) {
+      return false
+    } else if (this.#maxLength && this.#inputPassword.length > this.#maxLength) {
+      return false
+    }
+
+    return true
   }
 }

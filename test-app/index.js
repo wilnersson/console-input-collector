@@ -11,10 +11,14 @@ import { collector } from '../src/index.js'
 
 // console.log('Your age is: ' + usersAge)
 
-const todaysMood = await collector.getStringInput('How are you today?', 100)
+// const todaysMood = await collector.getStringInput('How are you today?', 100)
 
-console.log(`Your mood today is: ${todaysMood}`)
+// console.log(`Your mood today is: ${todaysMood}`)
 
 // const usersName = await collector.getStringInput('What is your name?', 3)
 
 // console.log(`Nice to meet you ${usersName}`)
+
+const password = await collector.getPasswordInput('Password:', 8, 1000)
+
+console.log(`Your password is: ${password}`)
