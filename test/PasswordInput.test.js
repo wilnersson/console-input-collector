@@ -28,6 +28,10 @@ describe('PasswordInput', () => {
     expect(passwordInput.isValid()).toBe(false)
   })
 
+  test('Passing a minLength that is larger than maxLength should throw a RangeError.', () => {
+    expect(() => new PasswordInput('unsafepassword', 100, 8)).toThrow(RangeError)
+  })
+
   test('A string as a minLength parameter should throw a RangeError.', () => {
     expect(() => new PasswordInput('unsafepassword', 'notanumber')).toThrow(RangeError)
   })

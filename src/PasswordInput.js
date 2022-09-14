@@ -28,6 +28,7 @@ export class PasswordInput {
     this.#maxLength = maxLength
 
     this.#validateMinLength()
+    this.#validateMaxLength()
   }
 
   /**
@@ -60,6 +61,23 @@ export class PasswordInput {
       }
 
       if (this.#maxLength && this.#minLength > this.#maxLength) {
+        throw this.#RANGE_ERROR
+      }
+    }
+  }
+
+  /**
+   * Validates the maxLength parameter.
+   *
+   * @throws {RangeError} - If parameter is invalid.
+   */
+  #validateMaxLength () {
+    if (this.#maxLength) {
+      if (typeof this.#maxLength !== 'number' || this.#maxLength < 1) {
+        throw this.#RANGE_ERROR
+      }
+
+      if (this.#minLength && this.#maxLength < this.#minLength) {
         throw this.#RANGE_ERROR
       }
     }
