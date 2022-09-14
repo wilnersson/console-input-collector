@@ -63,8 +63,10 @@ export class StringInput {
    * @throws {RangeError} - If parameter is invalid.
    */
   #validateMaxLength () {
-    if (typeof this.#maxLength !== 'number' || this.#maxLength < 1) {
-      throw new RangeError('maxLength must be a number larger than 0.')
+    if (this.#maxLength) {
+      if (typeof this.#maxLength !== 'number' || this.#maxLength < 1) {
+        throw new RangeError('maxLength must be a number larger than 0.')
+      }
     }
   }
 }
