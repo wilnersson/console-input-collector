@@ -10,6 +10,8 @@
  */
 export class SingleChoiceInput {
   #choices = []
+  #userChoiceInput
+  #isUserChoiceValid = false
   #TYPE_ERROR = new TypeError('choices must be an array of strings.')
 
   /**
@@ -28,7 +30,7 @@ export class SingleChoiceInput {
    *
    * @returns {string} - Options for the user.
    */
-  buildRenderText () {
+  getRenderText () {
     let textToRender = ''
 
     for (let i = 1; i <= this.#choices.length; i++) {
@@ -41,6 +43,34 @@ export class SingleChoiceInput {
   }
 
   /**
+   * Sets the users choice.
+   *
+   * @param {number} userChoice - The choice the user makes in the form of a number.
+   */
+  setUserChoice (userChoice) {
+    this.#userChoiceInput = userChoice
+    this.#isUserChoiceValid = this.#validateUserChoice()
+  }
+
+  /**
+   * Getter for the users choice.
+   *
+   * @returns {number} - Number representing the users choice.
+   */
+  getUserChoice () {
+    return this.#userChoiceInput
+  }
+
+  /**
+   * Returns the validity of the set user choice.
+   *
+   * @returns {boolean} - Validity.
+   */
+  isValid () {
+    return this.#isUserChoiceValid
+  }
+
+  /**
    * Validates the array of choices.
    *
    * @throws {TypeError} - If choices is invalid.
@@ -50,8 +80,23 @@ export class SingleChoiceInput {
       throw this.#TYPE_ERROR
     }
 
-    if (this.#choices.every((choice) => { return typeof choice === 'string' })) {
+    if (!this.#choices.every((choice) => { return typeof choice === 'string' })) {
       throw this.#TYPE_ERROR
     }
+  }
+
+  /**
+   * Validates that the users choice is a number in the correct range.
+   *
+   * @returns {boolean} - True if valid.
+   */
+  #validateUserChoice () {
+    if (typeof this.#userChoiceInput !== 'number') {
+      return false
+    } else if (this.#userChoiceInput < 1 || this.#userChoiceInput > this.#choices.length) {
+      return false
+    }
+
+    return true
   }
 }

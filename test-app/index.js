@@ -19,6 +19,10 @@ import { collector } from '../src/index.js'
 
 // console.log(`Nice to meet you ${usersName}`)
 
-const password = await collector.getPasswordInput('Password:', 8, 1000)
+// const password = await collector.getPasswordInput('Password:', 8, 1000)
 
-console.log(`Your password is: ${password}`)
+// console.log(`Your password is: ${password}`)
+
+const singleChoiceAnswer = await collector.getSingleChoiceInput('Where are you from?', ['Kalmar', 'Växjö', 'Göteborg', 'Malmö'])
+
+console.log('Your answer was: ' + singleChoiceAnswer)
