@@ -77,7 +77,7 @@ export class InputCollector {
    * @throws {Error} - ValidationError if user input is not valid.
    */
   async getPasswordInput (question, minLength = null, maxLength = null) {
-    this.#reader = new InputStreamReader()
+    this.#reader = new InputStreamReader(true)
 
     const passwordInput = new PasswordInput(await this.#reader.requestInput(question + ' '),
       minLength,
