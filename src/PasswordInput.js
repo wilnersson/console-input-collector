@@ -13,6 +13,7 @@ export class PasswordInput {
   #minLength
   #maxLength
   #isValid = true
+  #RANGE_ERROR = new RangeError('minLength/maxLenght must be numbers. minLength must be smaller than maxLength but larger than 0.')
 
   /**
    * Constructor for PasswordInput.
@@ -25,5 +26,42 @@ export class PasswordInput {
     this.#inputPassword = inputPassword
     this.#minLength = minLength
     this.#maxLength = maxLength
+
+    this.#validateMinLength()
+  }
+
+  /**
+   * Returns the validity of the input password.
+   *
+   * @returns {boolean} - Validity.
+   */
+  isValid () {
+    return this.#isValid
+  }
+
+  /**
+   * Getter for the input password.
+   *
+   * @returns {string} - The input password.
+   */
+  getInput () {
+    return this.#inputPassword
+  }
+
+  /**
+   * Validates the minLength parameter.
+   *
+   * @throws {RangeError} - If parameter is invalid.
+   */
+  #validateMinLength () {
+    if (this.#minLength) {
+      if (typeof this.#minLength !== 'number' || this.#minLength < 0) {
+        throw this.#RANGE_ERROR
+      }
+
+      if (this.#maxLength && this.#minLength > this.#maxLength) {
+        throw this.#RANGE_ERROR
+      }
+    }
   }
 }
