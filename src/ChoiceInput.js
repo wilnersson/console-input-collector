@@ -40,8 +40,17 @@ export class ChoiceInput {
    * @param {number} userChoice - The choice the user makes in the form of a number.
    */
   setUserChoice (userChoice) {
-    this.#userChoiceInput = userChoice
+    this.#userChoiceInput = Number.parseInt(userChoice)
     this.#isUserChoiceValid = this.validateUserChoice(this.#userChoiceInput)
+  }
+
+  /**
+   * Getter for the users choice in the form of the exact input.
+   *
+   * @returns {number} - The user choice input.
+   */
+  getUserChoiceInput () {
+    return this.#userChoiceInput
   }
 
   /**
