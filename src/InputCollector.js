@@ -104,9 +104,7 @@ export class InputCollector {
 
     this.#reader = new InputStreamReader()
     singleChoiceInput.setUserChoice(
-      Number.parseInt(
-        await this.#reader.requestInput(question + '\n' + singleChoiceInput.getRenderText())
-      )
+      await this.#reader.requestInput(question + '\n' + singleChoiceInput.getRenderText())
     )
 
     this.#reader.close()

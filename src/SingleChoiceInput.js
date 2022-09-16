@@ -48,7 +48,7 @@ export class SingleChoiceInput {
    * @param {number} userChoice - The choice the user makes in the form of a number.
    */
   setUserChoice (userChoice) {
-    this.#userChoiceInput = userChoice
+    this.#userChoiceInput = Number.parseInt(userChoice)
     this.#isUserChoiceValid = this.#validateUserChoice()
   }
 
