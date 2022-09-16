@@ -90,7 +90,7 @@ export class ChoiceInput {
    * @returns {boolean} - True if valid.
    */
   validateUserChoice (choice) {
-    if (typeof choice !== 'number') {
+    if (typeof choice !== 'number' || Number.isNaN(choice)) {
       return false
     } else if (choice < 1 || choice > this.#choices.length) {
       return false
