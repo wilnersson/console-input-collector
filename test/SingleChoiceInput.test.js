@@ -20,10 +20,10 @@ describe('SingleChoiceInput', () => {
     expect(singleChoiceInput.isValid()).toBe(false)
   })
 
-  test('Calling the user choice getter should return the answer.', () => {
+  test('Calling the user choice getter should return the answer in an object.', () => {
     const singleChoiceInput = new SingleChoiceInput(['a', 'b', 'c'])
     singleChoiceInput.setUserChoice(2)
-    expect(singleChoiceInput.getUserChoice()).toBe(2)
+    expect(singleChoiceInput.getUserChoice().choiceNumber).toBe(2)
   })
 
   test('Calling the render text getter should return a string at least as long as the supplied answers.', () => {
