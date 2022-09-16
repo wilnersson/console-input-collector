@@ -7,6 +7,7 @@
 
 import { InputStreamReader } from './InputStreamReader.js'
 import { IntegerInput } from './IntegerInput.js'
+import { MultipleChoiceInput } from './MultipleChoiceInput.js'
 import { PasswordInput } from './PasswordInput.js'
 import { SingleChoiceInput } from './SingleChoiceInput.js'
 import { StringInput } from './StringInput.js'
@@ -112,5 +113,27 @@ export class InputCollector {
 
     if (singleChoiceInput.isValid()) return singleChoiceInput.getUserChoice()
     throw this.#INPUT_ERROR
+  }
+
+  /**
+   * Asks the user a question and presents a list of possible answers.
+   * Requests the user to answer with a number corresponding to their answer.
+   *
+   * @param {string} question - The question to ask the user.
+   * @param {string[]} choices - An array of possible answers.
+   * @returns {object} - The validated answer from the user.
+   * @throws {Error} - ValidationError if user input is not valid.
+   */
+  async getMultipleChoiceInput (question, choices) {
+    const multipleChoiceInput = new MultipleChoiceInput(choices)
+
+    this.#reader = new InputStreamReader()
+    multipleChoiceInput.setUserChoice(
+      Number.parseInt(
+        await this.#reader.requestInput(question + '\n' + multipleChoiceInput.getRenderText())
+      )
+    )
+
+    this.#reader.close()
   }
 }

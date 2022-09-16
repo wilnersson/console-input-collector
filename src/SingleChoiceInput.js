@@ -65,6 +65,15 @@ export class SingleChoiceInput {
   }
 
   /**
+   * Returns a copy of the choices array.
+   *
+   * @returns {string[]} - An array of choices.
+   */
+  getChoices () {
+    return Array.from(this.#choices)
+  }
+
+  /**
    * Returns the validity of the set user choice.
    *
    * @returns {boolean} - Validity.
