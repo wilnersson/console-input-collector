@@ -25,4 +25,4 @@ import { collector } from '../src/index.js'
 
 const singleChoiceAnswer = await collector.getSingleChoiceInput('Where are you from?', ['Kalmar', 'Växjö', 'Göteborg', 'Malmö'])
 
-console.log('Your answer was: ' + singleChoiceAnswer)
+console.log('Your answer was: ' + singleChoiceAnswer.choiceNumber + ' - ' + singleChoiceAnswer.choiceText)

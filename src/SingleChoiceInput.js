@@ -55,10 +55,13 @@ export class SingleChoiceInput {
   /**
    * Getter for the users choice.
    *
-   * @returns {number} - Number representing the users choice.
+   * @returns {object} - Object representing the users choice both as a number and text representation.
    */
   getUserChoice () {
-    return this.#userChoiceInput
+    return {
+      choiceNumber: this.#userChoiceInput,
+      choiceText: this.#choices[this.#userChoiceInput - 1]
+    }
   }
 
   /**

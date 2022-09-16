@@ -95,7 +95,7 @@ export class InputCollector {
    *
    * @param {string} question - The question to ask the user.
    * @param {string[]} choices - An array of possible answers.
-   * @returns {number} - The validated answer from the user.
+   * @returns {object} - The validated answer from the user.
    * @throws {Error} - ValidationError if user input is not valid.
    */
   async getSingleChoiceInput (question, choices) {
