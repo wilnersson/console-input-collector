@@ -11,8 +11,6 @@ import { ChoiceInput } from './ChoiceInput.js'
  * Class for SingleChoiceInput.
  */
 export class SingleChoiceInput extends ChoiceInput {
-  #userChoiceInput
-
   /**
    * Builds the string that represents the options.
    *
