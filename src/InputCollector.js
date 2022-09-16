@@ -129,11 +129,12 @@ export class InputCollector {
 
     this.#reader = new InputStreamReader()
     multipleChoiceInput.setUserChoice(
-      Number.parseInt(
-        await this.#reader.requestInput(question + '\n' + multipleChoiceInput.getRenderText())
-      )
+      await this.#reader.requestInput(question + '\n' + multipleChoiceInput.getRenderText())
     )
 
     this.#reader.close()
+
+    if (multipleChoiceInput.isValid()) return multipleChoiceInput.getUserChoice()
+    throw this.#INPUT_ERROR
   }
 }

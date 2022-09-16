@@ -27,4 +27,6 @@ import { collector } from '../src/index.js'
 
 // console.log('Your answer was: ' + singleChoiceAnswer.choiceNumber + ' - ' + singleChoiceAnswer.choiceText)
 
-await collector.getMultipleChoiceInput('Where are you from?', ['Kalmar', 'Växjö', 'Göteborg', 'Malmö'])
+const multipleChoiceAnswer = await collector.getMultipleChoiceInput('Where are you from?', ['Kalmar', 'Växjö', 'Göteborg', 'Malmö'])
+
+console.log(multipleChoiceAnswer)
