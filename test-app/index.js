@@ -7,26 +7,95 @@
 
 import collector from '../src/index.js'
 
-// const usersAge = await collector.getIntegerInput('How old are you?', 1, 200)
+/**
+ * Starts the test-application.
+ */
+async function start () {
+  const collectedInformation = {}
 
-// console.log('Your age is: ' + usersAge)
+  do {
+    try {
+      collectedInformation.firstName = await collector.getStringInput('Please enter your first name:', 2)
+    } catch (error) {
+      if (checkForInvalidInputError(error)) {
+        printInvalidInputMessage()
+      }
+    }
+  } while (!collectedInformation.firstName)
 
-// const todaysMood = await collector.getStringInput('How are you today?', 100)
+  do {
+    try {
+      collectedInformation.lastName = await collector.getStringInput('Please enter your last name:')
+    } catch (error) {
+      if (checkForInvalidInputError(error)) {
+        printInvalidInputMessage()
+      }
+    }
+  } while (!collectedInformation.lastName)
 
-// console.log(`Your mood today is: ${todaysMood}`)
+  do {
+    try {
+      collectedInformation.age = await collector.getIntegerInput('Please enter your age:', 1, 150)
+    } catch (error) {
+      if (checkForInvalidInputError(error)) {
+        printInvalidInputMessage()
+      }
+    }
+  } while (!collectedInformation.age)
 
-// const usersName = await collector.getStringInput('What is your name?', 3)
+  const roles = ['Read-only', 'Editor', 'Publisher']
 
-// console.log(`Nice to meet you ${usersName}`)
+  do {
+    try {
+      collectedInformation.role = await collector.getSingleChoiceInput('Choose your role:', roles)
+    } catch (error) {
+      if (checkForInvalidInputError(error)) {
+        printInvalidInputMessage()
+      }
+    }
+  } while (!collectedInformation.role)
 
-// const password = await collector.getPasswordInput('Password:', 8, 1000)
+  do {
+    try {
+      collectedInformation.password = await collector.getPasswordInput('Set your password:')
+      const validatedPassword = await collector.getPasswordInput('Enter password again:')
 
-// console.log(`Your password is: ${password}`)
+      if (collectedInformation.password !== validatedPassword) {
+        delete collectedInformation.password
 
-// const singleChoiceAnswer = await collector.getSingleChoiceInput('Where are you from?', ['Kalmar', 'Växjö', 'Göteborg', 'Malmö'])
+        const passwordMatchError = new Error('Passwords do not match.')
+        passwordMatchError.name = 'PasswordMatchError'
+        throw passwordMatchError
+      }
+    } catch (error) {
+      if (checkForInvalidInputError(error)) {
+        printInvalidInputMessage()
+      }
 
-// console.log('Your answer was: ' + singleChoiceAnswer.choiceNumber + ' - ' + singleChoiceAnswer.choiceText)
+      if (error.name === 'PasswordMatchError') {
+        console.log('Passwords do not match, try again...')
+      }
+    }
+  } while (!collectedInformation.password)
 
-const multipleChoiceAnswer = await collector.getMultipleChoiceInput('Where are you from?', ['Kalmar', 'Växjö', 'Göteborg', 'Malmö'])
+  console.log(collectedInformation)
+}
 
-console.log(multipleChoiceAnswer)
+/**
+ * Prints the error message on invalid input.
+ */
+function printInvalidInputMessage () {
+  console.log('Invalid input, try again...')
+}
+
+/**
+ * Checks the supplied error message for ValidationError.
+ *
+ * @param {Error} error - The error object.
+ * @returns {boolean} - True if it is a ValidationError.
+ */
+function checkForInvalidInputError (error) {
+  if (error.name === 'ValidationError') return true
+}
+
+start()
