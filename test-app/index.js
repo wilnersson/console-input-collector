@@ -59,6 +59,21 @@ async function start () {
     }
   } while (!collectedInformation.role)
 
+  const fruit = ['Banana', 'Apple', 'Orange', 'Kiwi', 'Pineapple', 'Pear', 'Melon', 'Lemon', 'Lime', 'Grapes', 'Plume']
+
+  do {
+    try {
+      collectedInformation.fruits = await collector.getMultipleChoiceInput(
+        'What fruit do you like? (select all that apply)',
+        fruit
+      )
+    } catch (error) {
+      if (checkForInvalidInputError(error)) {
+        printInvalidInputMessage()
+      }
+    }
+  } while (!collectedInformation.fruits)
+
   do {
     try {
       collectedInformation.password = await collector.getPasswordInput('Set your password:', 8, 1000)
