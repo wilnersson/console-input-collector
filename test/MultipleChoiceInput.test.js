@@ -32,6 +32,12 @@ describe('MultipleChoiceInput', () => {
     expect(multipleChoiceInput.getUserChoice()[1].choiceNumber).toBe(2)
   })
 
+  test('Beginning or trailing spaces in the users choice should be removed and result in a valid answer.', () => {
+    const multipleChoiceInput = new MultipleChoiceInput(['a', 'b', 'c'])
+    multipleChoiceInput.setUserChoice(' 1 2  ')
+    expect(multipleChoiceInput.isValid()).toBe(true)
+  })
+
   test('Calling the render text getter should return a string at least as long as the supplied answers.', () => {
     const multipleChoiceInput = new MultipleChoiceInput(['abc', 'bcd', 'cde'])
     expect(multipleChoiceInput.getRenderText().length).toBeGreaterThan(9)

@@ -20,7 +20,10 @@ export class MultipleChoiceInput extends ChoiceInput {
    * @param {string} userChoice - The choices the user makes in the form of a string of numbers, separated by spaces.
    */
   setUserChoice (userChoice) {
-    this.#userChoiceInput = this.#convertInputToArray(userChoice)
+    if (typeof userChoice !== 'string') {
+      throw new TypeError('userChoice must be a string.')
+    }
+    this.#userChoiceInput = this.#convertInputToArray(userChoice.trim())
     this.#isUserChoiceValid = this.#validateUserChoice()
   }
 

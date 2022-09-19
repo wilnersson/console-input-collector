@@ -5,7 +5,7 @@
  * @version 1.0.0
  */
 
-import { collector } from '../src/index.js'
+import collector from '../src/index.js'
 
 // const usersAge = await collector.getIntegerInput('How old are you?', 1, 200)
 
@@ -23,9 +23,9 @@ import { collector } from '../src/index.js'
 
 // console.log(`Your password is: ${password}`)
 
-const singleChoiceAnswer = await collector.getSingleChoiceInput('Where are you from?', ['Kalmar', 'Växjö', 'Göteborg', 'Malmö'])
+// const singleChoiceAnswer = await collector.getSingleChoiceInput('Where are you from?', ['Kalmar', 'Växjö', 'Göteborg', 'Malmö'])
 
-console.log('Your answer was: ' + singleChoiceAnswer.choiceNumber + ' - ' + singleChoiceAnswer.choiceText)
+// console.log('Your answer was: ' + singleChoiceAnswer.choiceNumber + ' - ' + singleChoiceAnswer.choiceText)
 
 const multipleChoiceAnswer = await collector.getMultipleChoiceInput('Where are you from?', ['Kalmar', 'Växjö', 'Göteborg', 'Malmö'])
 
