@@ -19,7 +19,7 @@ async function start () {
 
   do {
     try {
-      collectedInformation.firstName = await collector.getStringInput('Please enter your first name:', 100)
+      collectedInformation.firstName = await collector.requestStringInput('Please enter your first name:', 100)
     } catch (error) {
       if (checkForInvalidInputError(error)) {
         printInvalidInputMessage()
@@ -29,7 +29,7 @@ async function start () {
 
   do {
     try {
-      collectedInformation.lastName = await collector.getStringInput('Please enter your last name:', 100)
+      collectedInformation.lastName = await collector.requestStringInput('Please enter your last name:', 100)
     } catch (error) {
       if (checkForInvalidInputError(error)) {
         printInvalidInputMessage()
@@ -39,7 +39,7 @@ async function start () {
 
   do {
     try {
-      collectedInformation.age = await collector.getIntegerInput('Please enter your age:', 1, 150)
+      collectedInformation.age = await collector.requestIntegerInput('Please enter your age:', 1, 150)
     } catch (error) {
       if (checkForInvalidInputError(error)) {
         printInvalidInputMessage()
@@ -51,7 +51,7 @@ async function start () {
 
   do {
     try {
-      collectedInformation.role = await collector.getSingleChoiceInput('Choose your role:', roles)
+      collectedInformation.role = await collector.requestSingleChoiceInput('Choose your role:', roles)
     } catch (error) {
       if (checkForInvalidInputError(error)) {
         printInvalidInputMessage()
@@ -63,7 +63,7 @@ async function start () {
 
   do {
     try {
-      collectedInformation.fruits = await collector.getMultipleChoiceInput(
+      collectedInformation.fruits = await collector.requestMultipleChoiceInput(
         'What fruit do you like? (select all that apply)',
         fruit
       )
@@ -76,8 +76,8 @@ async function start () {
 
   do {
     try {
-      collectedInformation.password = await collector.getPasswordInput('Set your password:', 8, 1000)
-      const validatedPassword = await collector.getPasswordInput('Enter password again:', 8, 1000)
+      collectedInformation.password = await collector.requestPasswordInput('Set your password:', 8, 1000)
+      const validatedPassword = await collector.requestPasswordInput('Enter password again:', 8, 1000)
 
       if (collectedInformation.password !== validatedPassword) {
         const passwordMatchError = new Error('Passwords do not match.')

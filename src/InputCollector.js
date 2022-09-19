@@ -35,7 +35,7 @@ export class InputCollector {
    * @returns {string} - The validated answer from the user.
    * @throws {Error} - ValidationError if user input is not valid.
    */
-  async getStringInput (question, maxAnswerLength = null) {
+  async requestStringInput (question, maxAnswerLength = null) {
     this.#reader = new InputStreamReader()
 
     const stringInput = new StringInput(await this.#reader.requestInput(question + ' '),
@@ -56,7 +56,7 @@ export class InputCollector {
    * @returns {number} - The validated answer from the user.
    * @throws {Error} - ValidationError if user input is not valid.
    */
-  async getIntegerInput (question, minValue = null, maxValue = null) {
+  async requestIntegerInput (question, minValue = null, maxValue = null) {
     this.#reader = new InputStreamReader()
 
     const integerInput = new IntegerInput(await this.#reader.requestInput(question + ' '),
@@ -78,7 +78,7 @@ export class InputCollector {
    * @returns {string} - The validated answer from the user.
    * @throws {Error} - ValidationError if user input is not valid.
    */
-  async getPasswordInput (question, minLength = null, maxLength = null) {
+  async requestPasswordInput (question, minLength = null, maxLength = null) {
     this.#reader = new InputStreamReader(true)
 
     const passwordInput = new PasswordInput(await this.#reader.requestInput(question + ' '),
@@ -99,7 +99,7 @@ export class InputCollector {
    * @returns {object} - The validated answer from the user.
    * @throws {Error} - ValidationError if user input is not valid.
    */
-  async getSingleChoiceInput (question, choices) {
+  async requestSingleChoiceInput (question, choices) {
     const singleChoiceInput = new SingleChoiceInput(choices)
 
     this.#reader = new InputStreamReader()
@@ -122,7 +122,7 @@ export class InputCollector {
    * @returns {object} - The validated answer from the user.
    * @throws {Error} - ValidationError if user input is not valid.
    */
-  async getMultipleChoiceInput (question, choices) {
+  async requestMultipleChoiceInput (question, choices) {
     const multipleChoiceInput = new MultipleChoiceInput(choices)
 
     this.#reader = new InputStreamReader()
