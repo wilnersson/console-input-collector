@@ -7,4 +7,4 @@
 
 import { InputCollector } from './InputCollector.js'
 
-export const collector = new InputCollector()
+export default new InputCollector()
