@@ -10,6 +10,8 @@ Något som är viktigt att veta är att det finns en större brist i testningen 
 
 Jag anser ändå att nedanstående tester ger mer värde än manuella tester hade gett, då det hade inneburit mycket färre tester som tagit mycket längre tid att genomföra.
 
+Nedanstående tester är alltså strukturerade efter de fem publika metoder som min modul tillhandahåller. Här simulerar jag att ge olika typer av input och testar förväntade resultat både vad gäller returvärden och validering.
+
 ## Utfall
 
 Tester körda 2022-09-19 kl. 15:33.
