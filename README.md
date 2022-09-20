@@ -24,8 +24,8 @@ console.log(userAge) // Logs user answer in terminal.
 
 ## Installation
 
-```bash
-npm install input-collector
+```
+Installation through npm is not available at this time, please clone the repository and import per the instructions below.
 ```
 
 Alternatively if you simply clone the Github repository, copy all files in the `src` folder to a destination of your choice, and import the default export from the `index.js`-file.
