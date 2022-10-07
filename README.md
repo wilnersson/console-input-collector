@@ -1,7 +1,6 @@
 # Input Collector
 Collect user input in your terminal input quickly and easily.
 
-## Motivation
 Instead of building your own functions for listening to the input stream, just request a type of input and supply the question. Input Collector handles collecting and validating the answers for you. Choose from five types of input collection:
 
 * Strings
