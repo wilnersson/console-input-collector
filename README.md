@@ -46,7 +46,7 @@ try {
 
 [bug] Erasing password input breaks output line ([#1][i1])
 
-[i1]: https://github.com/wilnersson/terminal-input-collector/issues/1
+[i1]: https://github.com/wilnersson/console-input-collector/issues/1
 
 ## Testing
 
