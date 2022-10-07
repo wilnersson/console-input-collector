@@ -1,7 +1,7 @@
 {
-  "name": "terminal-input-collector",
+  "name": "console-input-collector",
   "version": "1.0.0",
-  "description": "Helps you collect user input in your terminal apps.",
+  "description": "Helps you collect user input in your console apps.",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wilnersson/terminal-input-collector.git"
+    "url": "git+https://github.com/wilnersson/console-input-collector.git"
   },
   "author": "Henrik Wilnersson",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wilnersson/terminal-input-collector/issues"
+    "url": "https://github.com/wilnersson/console-input-collector/issues"
   },
-  "homepage": "https://github.com/wilnersson/terminal-input-collector#readme",
+  "homepage": "https://github.com/wilnersson/console-input-collector#readme",
   "devDependencies": {
     "@lnu/eslint-config": "^1.1.6",
     "jest": "^29.0.3"
