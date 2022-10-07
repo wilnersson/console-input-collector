@@ -1,6 +1,6 @@
 {
   "name": "@wilnersson/console-input-collector",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Helps you collect user input in your console apps.",
   "main": "src/index.js",
   "type": "module",
