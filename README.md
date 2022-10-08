@@ -14,7 +14,7 @@ Instead of building your own functions for listening to the input stream, just r
 Note that Input Collector is an ESM-only module, it can not be imported with `require()`.
 
 ```javascript
-import collector from 'input-collector'
+import collector from '@wilnersson/console-input-collector'
 
 const userAge = await collector.requestIntegerInput('What year were you born?', 1900, 2030) // Answers outside supplied min and max range throws an exception.
 
